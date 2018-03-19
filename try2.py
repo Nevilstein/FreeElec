@@ -1,17 +1,14 @@
 
 from matplotlib import pylab
 from pylab import plot,show
-from numpy import array,linspace,sqrt,sin
+from numpy import *
 from numpy.linalg import norm
-
-import math
 trig={
-    'sin(x)':'sin(x)',
-    'cos(x)':'(1/sin(x))',
-    'tan(x)':'sin(x)/(1/sin(x))',
+    'csc(x)':'(1/sin(x))',
+    'sec(x)':'(1/cos(x))'
+
 }
 def fixedp(f,x0,tol=10e-5,maxiter=100):
- """ Fixed point algorithm """
  e = 1
  itr = 0
  xp = []
@@ -24,16 +21,15 @@ def fixedp(f,x0,tol=10e-5,maxiter=100):
   print(itr,":",x)
  return x,xp
 
-
-
-
+print("(x) is a collection of evenly spaced numbers ranging from 0-2")
 finput=input("What do you wanna do with x? ")
-if(finput=="cos(x)" or finput=="tan(x)"):
-    finput=trig[finput]
+start=input("Enter starting point: ")
+if(finput=="csc(x)" or finput=="sec(x)"):
+   finput=trig[finput]
 f = lambda x : eval(finput)
 
 
-x_start = .5
+x_start = float(start)
 xf,xp = fixedp(f,x_start)
 
 x = linspace(0,2,100)
